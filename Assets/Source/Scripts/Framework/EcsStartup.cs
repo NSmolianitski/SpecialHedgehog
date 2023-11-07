@@ -12,7 +12,7 @@ namespace SpecialHedgehog.Scripts.Framework
 {
     public class EcsStartup : MonoBehaviour
     {
-        [SerializeField] private ConfigurationSO config;
+        [SerializeField] private GameConfig config;
         [SerializeField] private SceneData sceneData;
         [SerializeField] private EcsUguiEmitter uiEmitter;
 
@@ -30,7 +30,7 @@ namespace SpecialHedgehog.Scripts.Framework
             var gameData = new GameData();
             var timeService = new TimeService();
             var inputService = new InputService();
-            // var inputMaster = new InputMaster();
+            var inputMaster = new InputMaster();
 
             EcsPhysicsEvents.ecsWorld = _mainWorld;
 
@@ -41,8 +41,7 @@ namespace SpecialHedgehog.Scripts.Framework
                 ;
 
             _initSystems
-                // .ConvertScene()
-                // .Inject(gameData, config, sceneData, inputMaster)
+                .Inject(gameData, config, sceneData, inputMaster)
                 .Init();
 
             // Update
@@ -58,7 +57,7 @@ namespace SpecialHedgehog.Scripts.Framework
 
             _updateSystems
                 .InjectUgui(uiEmitter)
-                // .Inject(inputService, inputMaster, timeService, gameData, config, sceneData)
+                .Inject(inputService, inputMaster, timeService, gameData, config, sceneData)
                 .Init();
 
             // Fixed Update
