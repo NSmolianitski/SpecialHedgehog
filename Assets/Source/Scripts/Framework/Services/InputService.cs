@@ -1,13 +1,11 @@
-﻿namespace SpecialHedgehog.Scripts.Framework.Services
+﻿using UnityEngine;
+
+namespace SpecialHedgehog.Scripts.Framework.Services
 {
     public class InputService
     {
-        public float Right;
-        public float Forward;
-        
-        public float MouseX;
-        public float MouseY;
-
+        public Vector2 MovementDirection;
+        public Vector2 CursorPosition;
         public bool InteractKeyPressed;
     }
 }
