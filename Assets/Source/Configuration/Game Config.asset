@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <HeroViewPrefab>k__BackingField: {fileID: 7939132718103258933, guid: ed24df4561b6e44489883a86447fb523, type: 3}
   <HeroSpeed>k__BackingField: 200
+  <EnemyViewPrefab>k__BackingField: {fileID: 1563155862720492325, guid: df2f7fbcf5eabe84da3cc745ef558e74, type: 3}
+  <EnemySpeed>k__BackingField: 150

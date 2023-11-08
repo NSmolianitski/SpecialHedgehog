@@ -2,7 +2,6 @@
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Scripts.Framework.Services;
 using SpecialHedgehog.Scripts.UnityRefs;
-using UnityEngine;
 
 namespace SpecialHedgehog.Scripts.Movement
 {
@@ -24,7 +23,7 @@ namespace SpecialHedgehog.Scripts.Movement
                 ref var speed = ref _speedPool.Value.Get(entity);
                 ref var direction = ref _directionPool.Value.Get(entity);
 
-                var moveVector = direction.Value * (speed.Value * _timeService.Value.DeltaTime);
+                var moveVector = direction.Value.normalized * (speed.Value * _timeService.Value.DeltaTime);
                 rigidbody2DRef.Value.velocity = moveVector;
             }
         }

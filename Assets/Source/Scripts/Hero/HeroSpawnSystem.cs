@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Scripts.Cameras;
+using SpecialHedgehog.Scripts.Enemies;
 using SpecialHedgehog.Scripts.Framework.Configuration;
 using SpecialHedgehog.Scripts.Input;
 using SpecialHedgehog.Scripts.Movement;
@@ -18,18 +19,20 @@ namespace SpecialHedgehog.Scripts.Hero
         private EcsPoolInject<Speed> _speedPool;
         private EcsPoolInject<Direction> _directionPool;
         private EcsPoolInject<CameraTarget> _cameraTargetPool;
+        private EcsPoolInject<EnemyTarget> _enemyTargetPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         
         public void Init(IEcsSystems systems)
         {
             var heroView = Object.Instantiate(_gameConfig.Value.HeroViewPrefab, Vector3.zero, Quaternion.identity);
-            InitComponents(heroView);
+            InitComponents(heroView, systems.GetWorld());
         }
 
-        private void InitComponents(HeroView heroView)
+        private void InitComponents(HeroView heroView, EcsWorld world)
         {
             _heroPool.NewEntity(out var heroEntity);
+            heroView.PackedEntity = world.PackEntity(heroEntity);
             
             ref var rigidbody2DRef = ref _rigidbody2DRefPool.Value.Add(heroEntity);
             rigidbody2DRef.Value = heroView.Rigidbody2D;
@@ -42,6 +45,9 @@ namespace SpecialHedgehog.Scripts.Hero
 
             ref var cameraTarget = ref _cameraTargetPool.Value.Add(heroEntity);
             cameraTarget.TargetTransform = heroView.transform;
+            
+            ref var enemyTarget = ref _enemyTargetPool.Value.Add(heroEntity);
+            enemyTarget.TargetTransform = heroView.transform;
             
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);

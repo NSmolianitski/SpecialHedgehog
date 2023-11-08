@@ -17,7 +17,7 @@ namespace SpecialHedgehog.Scripts.Cameras
             foreach (var entity in _cameraTargetFilter.Value)
             {
                 ref var cameraTarget = ref _cameraTargetPool.Value.Get(entity);
-                _sceneData.Value.mainVirtualCamera.Follow = cameraTarget.TargetTransform;
+                _sceneData.Value.MainVirtualCamera.Follow = cameraTarget.TargetTransform;
             }
         }
     }

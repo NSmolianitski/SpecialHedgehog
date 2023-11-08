@@ -5,6 +5,7 @@ using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.Unity.Ugui;
 using Leopotam.EcsLite.UnityEditor;
 using SpecialHedgehog.Scripts.Cameras;
+using SpecialHedgehog.Scripts.Enemies;
 using SpecialHedgehog.Scripts.Framework.Configuration;
 using SpecialHedgehog.Scripts.Framework.Services;
 using SpecialHedgehog.Scripts.Hero;
@@ -83,6 +84,9 @@ namespace SpecialHedgehog.Scripts.Framework
                 .Add(new MenuInputSystem())
                 
                 .Add(new InputToDirectionSystem())
+                
+                .Add(new EnemySpawnSystem())
+                .Add(new EnemyDirectionUpdateSystem())
                 
                 .Add(new Rigidbody2DMovement())
                 ;

@@ -1,4 +1,5 @@
-﻿using SpecialHedgehog.Scripts.Hero;
+﻿using SpecialHedgehog.Scripts.Enemies;
+using SpecialHedgehog.Scripts.Hero;
 using UnityEngine;
 
 namespace SpecialHedgehog.Scripts.Framework.Configuration
@@ -8,7 +9,10 @@ namespace SpecialHedgehog.Scripts.Framework.Configuration
     {
         [field: Header("Hero")]
         [field: SerializeField] public HeroView HeroViewPrefab { get; private set; }
-
-        [field: SerializeField] public float HeroSpeed { get; private set; } = 10;
+        [field: SerializeField] public float HeroSpeed { get; private set; } = 200;
+        
+        [field: Header("Enemies")]
+        [field: SerializeField] public EnemyView EnemyViewPrefab { get; private set; }
+        [field: SerializeField] public float EnemySpeed { get; private set; } = 150;
     }
 }
