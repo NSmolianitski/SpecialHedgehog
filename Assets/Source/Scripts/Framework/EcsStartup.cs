@@ -1,22 +1,27 @@
-using System.Collections.Generic;
-using LeoEcsPhysics;
+using BaboonAndCo.Patterns;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite.ExtendedSystems;
 using Leopotam.EcsLite.Unity.Ugui;
 using Leopotam.EcsLite.UnityEditor;
+using SpecialHedgehog.Scripts.Attack;
 using SpecialHedgehog.Scripts.Cameras;
-using SpecialHedgehog.Scripts.Enemies;
+using SpecialHedgehog.Scripts.Damage;
+using SpecialHedgehog.Scripts.Death;
 using SpecialHedgehog.Scripts.Framework.Configuration;
+using SpecialHedgehog.Scripts.Framework.Physics;
 using SpecialHedgehog.Scripts.Framework.Services;
+using SpecialHedgehog.Scripts.Health;
 using SpecialHedgehog.Scripts.Hero;
 using SpecialHedgehog.Scripts.Input;
+using SpecialHedgehog.Scripts.Mobs;
 using SpecialHedgehog.Scripts.Movement;
 using SpecialHedgehog.Scripts.Time;
 using UnityEngine;
 
 namespace SpecialHedgehog.Scripts.Framework
 {
-    public class EcsStartup : MonoBehaviour
+    public class EcsStartup : Singleton<EcsStartup>
     {
         [SerializeField] private GameConfig config;
         [SerializeField] private SceneData sceneData;
@@ -39,7 +44,7 @@ namespace SpecialHedgehog.Scripts.Framework
             var inputService = new InputService();
             var inputMaster = new InputMaster();
 
-            EcsPhysicsEvents.ecsWorld = _mainWorld;
+            EcsPhysicsEvents.EcsWorld = _eventWorld;
 
             var shared = new object[]
             {
@@ -61,7 +66,9 @@ namespace SpecialHedgehog.Scripts.Framework
         {
             _initSystems = new EcsSystems(_mainWorld)
                 .AddWorld(_eventWorld, Constants.Worlds.Events)
+                
                 .Add(new HeroSpawnSystem())
+                
                 .Add(new CameraInitSystem())
                 ;
 
@@ -85,10 +92,17 @@ namespace SpecialHedgehog.Scripts.Framework
                 
                 .Add(new InputToDirectionSystem())
                 
-                .Add(new EnemySpawnSystem())
-                .Add(new EnemyDirectionUpdateSystem())
+                .Add(new MobSpawnSystem())
+                .Add(new MobDirectionUpdateSystem())
+                .Add(new AttackCooldownReduceSystem())
+                .Add(new MobAttackSystem())
                 
-                .Add(new Rigidbody2DMovement())
+                    .DelHere<Damaged>()
+                .Add(new MakeDamageSystem())
+                    .DelHere<MakeDamageRequest>(Constants.Worlds.Events)
+                .Add(new DeathSystem())
+                
+                .Add(new HealthbarUpdateSystem())
                 ;
 
             _updateSystems
@@ -101,6 +115,11 @@ namespace SpecialHedgehog.Scripts.Framework
         {
             _fixedUpdateSystems = new EcsSystems(_mainWorld)
                 .AddWorld(_eventWorld, Constants.Worlds.Events)
+                
+                .Add(new MobHeroTriggerSystem())
+                    .DelHerePhysics(Constants.Worlds.Events)
+                
+                .Add(new Rigidbody2DMovement())
                 ;
 
             _fixedUpdateSystems
@@ -112,6 +131,8 @@ namespace SpecialHedgehog.Scripts.Framework
         {
             _lateUpdateSystems = new EcsSystems(_mainWorld)
                 .AddWorld(_eventWorld, Constants.Worlds.Events)
+                
+                
                 ;
 
             _lateUpdateSystems
@@ -143,9 +164,12 @@ namespace SpecialHedgehog.Scripts.Framework
             _initSystems.Destroy();
             _updateSystems.Destroy();
             _fixedUpdateSystems.Destroy();
+            _lateUpdateSystems.Destroy();
             
             _eventWorld.Destroy();
             _mainWorld.Destroy();
         }
+
+        public EcsWorld GetWorld(in string worldName) => _initSystems.GetWorld(worldName);
     }
 }

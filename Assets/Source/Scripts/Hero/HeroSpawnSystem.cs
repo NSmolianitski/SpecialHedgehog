@@ -1,9 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Scripts.Cameras;
-using SpecialHedgehog.Scripts.Enemies;
 using SpecialHedgehog.Scripts.Framework.Configuration;
+using SpecialHedgehog.Scripts.Health;
 using SpecialHedgehog.Scripts.Input;
+using SpecialHedgehog.Scripts.Mobs;
 using SpecialHedgehog.Scripts.Movement;
 using SpecialHedgehog.Scripts.UnityRefs;
 using UnityEngine;
@@ -19,7 +20,9 @@ namespace SpecialHedgehog.Scripts.Hero
         private EcsPoolInject<Speed> _speedPool;
         private EcsPoolInject<Direction> _directionPool;
         private EcsPoolInject<CameraTarget> _cameraTargetPool;
-        private EcsPoolInject<EnemyTarget> _enemyTargetPool;
+        private EcsPoolInject<MobTarget> _enemyTargetPool;
+        private EcsPoolInject<Health.Health> _healthPool;
+        private EcsPoolInject<HealthbarViewRef> _healthbarViewRefPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         
@@ -48,6 +51,13 @@ namespace SpecialHedgehog.Scripts.Hero
             
             ref var enemyTarget = ref _enemyTargetPool.Value.Add(heroEntity);
             enemyTarget.TargetTransform = heroView.transform;
+            
+            ref var health = ref _healthPool.Value.Add(heroEntity);
+            health.Max = _gameConfig.Value.HeroHealth;
+            health.Current = health.Max;
+
+            ref var healthbarRef = ref _healthbarViewRefPool.Value.Add(heroEntity);
+            healthbarRef.Value = Object.FindObjectOfType<HealthbarView>(); // TODO: Replace FindObjectOfType
             
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);

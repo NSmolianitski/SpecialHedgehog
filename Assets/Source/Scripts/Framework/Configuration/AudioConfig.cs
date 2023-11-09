@@ -3,7 +3,7 @@
 namespace SpecialHedgehog.Scripts.Framework.Configuration
 {
     [CreateAssetMenu(fileName = "Audio Configuration", menuName = "Data/Audio Configuration", order = 1)]
-    public class AudioConfigurationSO : ScriptableObject
+    public class AudioConfig : ScriptableObject
     {
         [field: SerializeField] public float DefaultMasterVolume { get; private set; } = 1;
         [field: SerializeField] public float DefaultMusicVolume { get; private set; } = 1;

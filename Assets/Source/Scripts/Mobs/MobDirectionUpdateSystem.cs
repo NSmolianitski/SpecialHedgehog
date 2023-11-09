@@ -4,14 +4,14 @@ using SpecialHedgehog.Scripts.Movement;
 using SpecialHedgehog.Scripts.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Enemies
+namespace SpecialHedgehog.Scripts.Mobs
 {
-    public class EnemyDirectionUpdateSystem : IEcsRunSystem
+    public class MobDirectionUpdateSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EnemyTarget>> _enemyTargetFilter;
-        private EcsFilterInject<Inc<Enemy, Direction, TransformRef>> _enemyFilter;
+        private EcsFilterInject<Inc<MobTarget>> _enemyTargetFilter;
+        private EcsFilterInject<Inc<Mob, Direction, TransformRef>> _enemyFilter;
 
-        private EcsPoolInject<EnemyTarget> _enemyTargetPool;
+        private EcsPoolInject<MobTarget> _enemyTargetPool;
         private EcsPoolInject<Direction> _directionPool;
         private EcsPoolInject<TransformRef> _transformRefPool;
 
@@ -20,15 +20,20 @@ namespace SpecialHedgehog.Scripts.Enemies
             Transform target = null;
             foreach (var entity in _enemyTargetFilter.Value)
             {
-                ref var enemyTarget = ref _enemyTargetPool.Value.Get(entity);
-                target = enemyTarget.TargetTransform;
+                ref var mobTarget = ref _enemyTargetPool.Value.Get(entity);
+                target = mobTarget.TargetTransform;
             }
             
             foreach (var entity in _enemyFilter.Value)
             {
                 ref var transformRef = ref _transformRefPool.Value.Get(entity);
                 ref var direction = ref _directionPool.Value.Get(entity);
-                direction.Value = target.position - transformRef.Value.position;
+                
+                var targetVector = (Vector2) (target.position - transformRef.Value.position);
+                if (targetVector.sqrMagnitude < 0.01f)
+                    targetVector = Vector3.zero;
+                
+                direction.Value = targetVector;
             }
         }
     }

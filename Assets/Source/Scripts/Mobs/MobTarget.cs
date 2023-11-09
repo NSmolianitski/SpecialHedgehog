@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Enemies
+namespace SpecialHedgehog.Scripts.Mobs
 {
-    public struct EnemyTarget
+    public struct MobTarget
     {
         public Transform TargetTransform;
     }
