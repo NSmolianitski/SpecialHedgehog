@@ -1,5 +1,4 @@
-﻿using BaboonAndCo.Extensions;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Scripts.Death;
 using SpecialHedgehog.Scripts.Extensions;

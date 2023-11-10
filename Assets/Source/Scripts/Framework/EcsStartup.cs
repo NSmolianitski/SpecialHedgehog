@@ -4,6 +4,7 @@ using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
 using Leopotam.EcsLite.Unity.Ugui;
 using Leopotam.EcsLite.UnityEditor;
+using SpecialHedgehog.Scripts.Abilities;
 using SpecialHedgehog.Scripts.Attack;
 using SpecialHedgehog.Scripts.Cameras;
 using SpecialHedgehog.Scripts.Damage;
@@ -16,6 +17,7 @@ using SpecialHedgehog.Scripts.Hero;
 using SpecialHedgehog.Scripts.Input;
 using SpecialHedgehog.Scripts.Mobs;
 using SpecialHedgehog.Scripts.Movement;
+using SpecialHedgehog.Scripts.Projectiles;
 using SpecialHedgehog.Scripts.Time;
 using UnityEngine;
 
@@ -92,10 +94,18 @@ namespace SpecialHedgehog.Scripts.Framework
                 
                 .Add(new InputToDirectionSystem())
                 
+                .Add(new PistolAbilitySystem())
+                
+                .Add(new ProjectileSpawnSystem())
+                    .DelHere<ProjectileSpawnRequest>(Constants.Worlds.Events)
+                
                 .Add(new MobSpawnSystem())
                 .Add(new MobDirectionUpdateSystem())
                 .Add(new AttackCooldownReduceSystem())
                 .Add(new MobAttackSystem())
+                
+                .Add(new ProjectileEnemyHitSystem())
+                    .DelHere<FirstEnemyHit>()
                 
                     .DelHere<Damaged>()
                 .Add(new MakeDamageSystem())
@@ -103,6 +113,9 @@ namespace SpecialHedgehog.Scripts.Framework
                 .Add(new DeathSystem())
                 
                 .Add(new HealthbarUpdateSystem())
+                
+                .Add(new Rigidbody2DMovement())
+                
                 ;
 
             _updateSystems
@@ -116,10 +129,6 @@ namespace SpecialHedgehog.Scripts.Framework
             _fixedUpdateSystems = new EcsSystems(_mainWorld)
                 .AddWorld(_eventWorld, Constants.Worlds.Events)
                 
-                .Add(new MobHeroTriggerSystem())
-                    .DelHerePhysics(Constants.Worlds.Events)
-                
-                .Add(new Rigidbody2DMovement())
                 ;
 
             _fixedUpdateSystems

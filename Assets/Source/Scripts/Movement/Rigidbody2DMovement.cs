@@ -23,7 +23,7 @@ namespace SpecialHedgehog.Scripts.Movement
                 ref var speed = ref _speedPool.Value.Get(entity);
                 ref var direction = ref _directionPool.Value.Get(entity);
 
-                var moveVector = direction.Value.normalized * (speed.Value * _timeService.Value.DeltaTime);
+                var moveVector = direction.Value.normalized * speed.Value;
                 rigidbody2DRef.Value.velocity = moveVector;
             }
         }

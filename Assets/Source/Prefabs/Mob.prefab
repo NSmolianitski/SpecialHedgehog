@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4044232697753709525}
   - component: {fileID: 1786458329451353917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010913342, y: -0.18696511}
+  m_Offset: {x: 0.010913342, y: -0.12633574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -172,7 +172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4865201, y: 0.07970464}
+  m_Size: {x: 0.4865201, y: 0.20096338}
   m_EdgeRadius: 0
 --- !u!1 &4950127743429309616
 GameObject:
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 6644381279347566125}
   - component: {fileID: 5798638683619939248}
   - component: {fileID: 4673508899095145436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hero Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

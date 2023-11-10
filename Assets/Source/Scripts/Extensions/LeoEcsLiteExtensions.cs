@@ -4,10 +4,12 @@ namespace SpecialHedgehog.Scripts.Extensions
 {
     public static class LeoEcsLiteExtensions
     {
-        public static void TryAdd<T>(this EcsPool<T> pool, int entity) where T : struct
+        public static bool TryAdd<T>(this EcsPool<T> pool, int entity) where T : struct
         {
-            if (!pool.Has(entity))
-                pool.Add(entity);
+            if (pool.Has(entity)) return false;
+            
+            pool.Add(entity);
+            return true;
         }
     }
 }

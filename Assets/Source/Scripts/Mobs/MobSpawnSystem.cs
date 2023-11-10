@@ -20,6 +20,7 @@ namespace SpecialHedgehog.Scripts.Mobs
         private EcsPoolInject<TransformRef> _transformRefPool;
         private EcsPoolInject<Rigidbody2DRef> _rigidbody2DRefPool;
         private EcsPoolInject<DamageStat> _damageStatPool;
+        private EcsPoolInject<Health.Health> _healthPool;
 
         private EcsWorld _world;
         
@@ -62,6 +63,10 @@ namespace SpecialHedgehog.Scripts.Mobs
             ref var damageStat = ref _damageStatPool.Value.Add(mobEntity);
             damageStat.InitValue = _gameConfig.Value.MobDamage;
             damageStat.CurrentValue = damageStat.InitValue;
+
+            ref var health = ref _healthPool.Value.Add(mobEntity);
+            health.Max = _gameConfig.Value.MobHealth;
+            health.Current = health.Max;
             
             _mobPool.Value.Add(mobEntity);
             _directionPool.Value.Add(mobEntity);

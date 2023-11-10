@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using SpecialHedgehog.Scripts.Abilities;
 using SpecialHedgehog.Scripts.Cameras;
 using SpecialHedgehog.Scripts.Framework.Configuration;
 using SpecialHedgehog.Scripts.Health;
@@ -23,6 +24,7 @@ namespace SpecialHedgehog.Scripts.Hero
         private EcsPoolInject<MobTarget> _enemyTargetPool;
         private EcsPoolInject<Health.Health> _healthPool;
         private EcsPoolInject<HealthbarViewRef> _healthbarViewRefPool;
+        private EcsPoolInject<PistolAbility> _pistolAbilityPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         
@@ -61,6 +63,7 @@ namespace SpecialHedgehog.Scripts.Hero
             
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);
+            _pistolAbilityPool.Value.Add(heroEntity);
         }
     }
 }

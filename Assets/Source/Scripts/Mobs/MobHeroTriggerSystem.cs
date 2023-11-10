@@ -12,8 +12,8 @@ namespace SpecialHedgehog.Scripts.Mobs
         private EcsFilterInject<Inc<OnTriggerEnter2DEvent>> _triggerEnterFilter = Constants.Worlds.Events;
         private EcsFilterInject<Inc<OnTriggerExit2DEvent>> _triggerExitFilter = Constants.Worlds.Events;
 
-        private EcsPoolInject<OnTriggerEnter2DEvent> _onTriggerEnter2DEventPool = Constants.Worlds.Events;
-        private EcsPoolInject<OnTriggerExit2DEvent> _onTriggerExit2DEventPool = Constants.Worlds.Events;
+        private EcsPoolInject<OnTriggerEnter2DEvent> _onTriggerEnterEventPool = Constants.Worlds.Events;
+        private EcsPoolInject<OnTriggerExit2DEvent> _onTriggerExitEventPool = Constants.Worlds.Events;
         private EcsPoolInject<EnemyNearby> _enemyNearbyPool;
 
         private EcsWorldInject _world;
@@ -28,7 +28,7 @@ namespace SpecialHedgehog.Scripts.Mobs
         {
             foreach (var entity in _triggerEnterFilter.Value)
             {
-                ref var triggerEvent = ref _onTriggerEnter2DEventPool.Value.Get(entity);
+                ref var triggerEvent = ref _onTriggerEnterEventPool.Value.Get(entity);
                 
                 if (!triggerEvent.SenderGameObject.TryGetComponentInParent<MobView>(out var mobView)) continue;
 
@@ -40,6 +40,8 @@ namespace SpecialHedgehog.Scripts.Mobs
 
                 ref var enemyNearby = ref _enemyNearbyPool.Value.Add(mobEntity);
                 enemyNearby.EnemyPackedEntity = heroView.PackedEntity;
+                
+                _onTriggerEnterEventPool.Value.Del(entity);
             }
         }
         
@@ -47,7 +49,7 @@ namespace SpecialHedgehog.Scripts.Mobs
         {
             foreach (var entity in _triggerExitFilter.Value)
             {
-                ref var triggerEvent = ref _onTriggerExit2DEventPool.Value.Get(entity);
+                ref var triggerEvent = ref _onTriggerExitEventPool.Value.Get(entity);
                 
                 if (!triggerEvent.SenderGameObject.TryGetComponentInParent<MobView>(out var mobView)) continue;
                 if (!triggerEvent.Collider2D.gameObject.TryGetComponentInParent<HeroView>(out var heroView)) continue;
@@ -55,6 +57,8 @@ namespace SpecialHedgehog.Scripts.Mobs
                 if (!mobView.PackedEntity.Unpack(_world.Value, out var mobEntity)) continue;
                 if (_enemyNearbyPool.Value.Has(mobEntity))
                     _enemyNearbyPool.Value.Del(mobEntity);
+                
+                _onTriggerExitEventPool.Value.Del(entity);
             }
         }
     }

@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Game Config
   m_EditorClassIdentifier: 
   <HeroViewPrefab>k__BackingField: {fileID: 7939132718103258933, guid: ed24df4561b6e44489883a86447fb523, type: 3}
-  <HeroSpeed>k__BackingField: 200
+  <HeroSpeed>k__BackingField: 4
   <HeroHealth>k__BackingField: 100
   <MobViewPrefab>k__BackingField: {fileID: 1563155862720492325, guid: df2f7fbcf5eabe84da3cc745ef558e74, type: 3}
-  <MobSpeed>k__BackingField: 140
+  <MobSpeed>k__BackingField: 3
   <MobDamage>k__BackingField: 1
+  <MobHealth>k__BackingField: 20
   <MobAttackCooldown>k__BackingField: 0.3
+  <ProjectilePrefab>k__BackingField: {fileID: 5575350297116973129, guid: 78aee77586f153440b130a556c5146d3, type: 3}
+  <ProjectileSpeed>k__BackingField: 10
+  <ProjectileDamage>k__BackingField: 20
