@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Movement;
-using SpecialHedgehog.Scripts.UnityRefs;
+using SpecialHedgehog.Movement;
+using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Mobs
+namespace SpecialHedgehog.Mobs
 {
     public class MobDirectionUpdateSystem : IEcsRunSystem
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Projectiles
+namespace SpecialHedgehog.Projectiles
 {
     public struct ProjectileSpawnRequest
     {

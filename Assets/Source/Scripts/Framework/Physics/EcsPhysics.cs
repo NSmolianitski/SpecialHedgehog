@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
-using SpecialHedgehog.Scripts.Framework.Physics.Events;
+using SpecialHedgehog.Framework.Physics.Events;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework.Physics
+namespace SpecialHedgehog.Framework.Physics
 {
     public static class EcsPhysicsEvents
     {

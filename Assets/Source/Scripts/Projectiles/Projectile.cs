@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Projectiles
+﻿namespace SpecialHedgehog.Projectiles
 {
     public struct Projectile {}
 }

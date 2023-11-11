@@ -23,3 +23,4 @@ MonoBehaviour:
   <ProjectilePrefab>k__BackingField: {fileID: 5575350297116973129, guid: 78aee77586f153440b130a556c5146d3, type: 3}
   <ProjectileSpeed>k__BackingField: 10
   <ProjectileDamage>k__BackingField: 20
+  <GemPrefab>k__BackingField: {fileID: 3200956715852139743, guid: 4f85cdeef16fcea49b0871001e17964f, type: 3}

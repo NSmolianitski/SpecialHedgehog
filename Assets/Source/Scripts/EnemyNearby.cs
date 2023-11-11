@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace SpecialHedgehog.Scripts
+namespace SpecialHedgehog
 {
     public struct EnemyNearby
     {

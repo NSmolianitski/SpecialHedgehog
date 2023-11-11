@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework.Physics.Events
+namespace SpecialHedgehog.Framework.Physics.Events
 {
     public struct OnTriggerEnter2DEvent
     {

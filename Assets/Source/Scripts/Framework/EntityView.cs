@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Framework
+﻿namespace SpecialHedgehog.Framework
 {
     public struct EntityView
     {

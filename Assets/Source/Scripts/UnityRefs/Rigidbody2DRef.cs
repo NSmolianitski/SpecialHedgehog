@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.UnityRefs
+namespace SpecialHedgehog.UnityRefs
 {
     public struct Rigidbody2DRef
     {

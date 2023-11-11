@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Damage;
+using SpecialHedgehog.Damage;
 
-namespace SpecialHedgehog.Scripts.Health
+namespace SpecialHedgehog.Health
 {
-    public class HealthbarUpdateSystem : IEcsRunSystem
+    public class HealthbarUIUpdateSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<Health, HealthbarViewRef, Damaged>> _filter;
 

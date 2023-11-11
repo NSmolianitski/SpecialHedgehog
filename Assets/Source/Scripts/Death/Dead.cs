@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Death
+﻿namespace SpecialHedgehog.Death
 {
     public struct Dead {}
 }

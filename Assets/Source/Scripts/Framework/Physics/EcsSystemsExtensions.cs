@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.ExtendedSystems;
-using SpecialHedgehog.Scripts.Framework.Physics.Events;
+using SpecialHedgehog.Framework.Physics.Events;
 
-namespace SpecialHedgehog.Scripts.Framework.Physics
+namespace SpecialHedgehog.Framework.Physics
 {
     public static class EcsSystemsExtensions
     {

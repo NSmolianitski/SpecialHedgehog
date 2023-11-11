@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace SpecialHedgehog.Scripts
+namespace SpecialHedgehog.Health
 {
     public class HealthbarView : MonoBehaviour
     {

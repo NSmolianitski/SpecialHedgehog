@@ -1,16 +1,17 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Abilities;
-using SpecialHedgehog.Scripts.Cameras;
-using SpecialHedgehog.Scripts.Framework.Configuration;
-using SpecialHedgehog.Scripts.Health;
-using SpecialHedgehog.Scripts.Input;
-using SpecialHedgehog.Scripts.Mobs;
-using SpecialHedgehog.Scripts.Movement;
-using SpecialHedgehog.Scripts.UnityRefs;
+using SpecialHedgehog.Abilities;
+using SpecialHedgehog.Cameras;
+using SpecialHedgehog.Framework.Configuration;
+using SpecialHedgehog.Health;
+using SpecialHedgehog.Input;
+using SpecialHedgehog.Mobs;
+using SpecialHedgehog.Movement;
+using SpecialHedgehog.PickUps;
+using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Hero
+namespace SpecialHedgehog.Hero
 {
     public class HeroSpawnSystem : IEcsInitSystem
     {
@@ -25,6 +26,7 @@ namespace SpecialHedgehog.Scripts.Hero
         private EcsPoolInject<Health.Health> _healthPool;
         private EcsPoolInject<HealthbarViewRef> _healthbarViewRefPool;
         private EcsPoolInject<PistolAbility> _pistolAbilityPool;
+        private EcsPoolInject<GemWalletOwner> _gemWalletOwnerPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         
@@ -64,6 +66,7 @@ namespace SpecialHedgehog.Scripts.Hero
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);
             _pistolAbilityPool.Value.Add(heroEntity);
+            _gemWalletOwnerPool.Value.Add(heroEntity);
         }
     }
 }

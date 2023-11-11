@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Death;
-using SpecialHedgehog.Scripts.Extensions;
-using SpecialHedgehog.Scripts.Framework;
+using SpecialHedgehog.Death;
+using SpecialHedgehog.Extensions;
+using SpecialHedgehog.Framework;
 
-namespace SpecialHedgehog.Scripts.Damage
+namespace SpecialHedgehog.Damage
 {
     public class MakeDamageSystem : IEcsRunSystem
     {

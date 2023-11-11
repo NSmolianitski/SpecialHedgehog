@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework.Physics.Checkers
+namespace SpecialHedgehog.Framework.Physics.Checkers
 {
     public class OnTriggerEnter2DChecker : MonoBehaviour
     {

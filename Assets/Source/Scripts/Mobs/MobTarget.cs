@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Mobs
+namespace SpecialHedgehog.Mobs
 {
     public struct MobTarget
     {

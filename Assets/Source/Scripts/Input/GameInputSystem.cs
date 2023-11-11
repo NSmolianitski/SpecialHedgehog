@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework.Services;
+using SpecialHedgehog.Framework.Services;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Input
+namespace SpecialHedgehog.Input
 {
     public class GameInputSystem : IEcsInitSystem, IEcsRunSystem
     {

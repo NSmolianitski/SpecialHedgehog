@@ -1,14 +1,14 @@
 ﻿using BaboonAndCo.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Damage;
-using SpecialHedgehog.Scripts.Death;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Movement;
-using SpecialHedgehog.Scripts.UnityRefs;
+using SpecialHedgehog.Damage;
+using SpecialHedgehog.Death;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Movement;
+using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Projectiles
+namespace SpecialHedgehog.Projectiles
 {
     public class ProjectileSpawnSystem : IEcsRunSystem
     {

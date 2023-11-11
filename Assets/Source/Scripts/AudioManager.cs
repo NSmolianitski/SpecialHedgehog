@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace SpecialHedgehog.Scripts
+namespace SpecialHedgehog
 {
     public class AudioManager : MonoBehaviour
     {

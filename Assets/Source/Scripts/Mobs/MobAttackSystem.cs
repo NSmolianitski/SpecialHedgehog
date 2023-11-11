@@ -1,11 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Attack;
-using SpecialHedgehog.Scripts.Damage;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Framework.Configuration;
+using SpecialHedgehog.Attack;
+using SpecialHedgehog.Damage;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Framework.Configuration;
 
-namespace SpecialHedgehog.Scripts.Mobs
+namespace SpecialHedgehog.Mobs
 {
     public class MobAttackSystem : IEcsRunSystem
     {

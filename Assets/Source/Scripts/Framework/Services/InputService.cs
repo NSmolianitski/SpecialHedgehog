@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework.Services
+namespace SpecialHedgehog.Framework.Services
 {
     public class InputService
     {

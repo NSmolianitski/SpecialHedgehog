@@ -1,10 +1,10 @@
 ﻿using BaboonAndCo.Extensions;
 using Leopotam.EcsLite;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Hero;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Hero;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Mobs
+namespace SpecialHedgehog.Mobs
 {
     public class MobView : EntityOwner
     {

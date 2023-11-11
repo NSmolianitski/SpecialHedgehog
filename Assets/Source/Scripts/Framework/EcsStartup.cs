@@ -3,24 +3,25 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
 using Leopotam.EcsLite.UnityEditor;
-using SpecialHedgehog.Scripts.Abilities;
-using SpecialHedgehog.Scripts.Attack;
-using SpecialHedgehog.Scripts.Cameras;
-using SpecialHedgehog.Scripts.Damage;
-using SpecialHedgehog.Scripts.Death;
-using SpecialHedgehog.Scripts.Framework.Configuration;
-using SpecialHedgehog.Scripts.Framework.Physics;
-using SpecialHedgehog.Scripts.Framework.Services;
-using SpecialHedgehog.Scripts.Health;
-using SpecialHedgehog.Scripts.Hero;
-using SpecialHedgehog.Scripts.Input;
-using SpecialHedgehog.Scripts.Mobs;
-using SpecialHedgehog.Scripts.Movement;
-using SpecialHedgehog.Scripts.Projectiles;
-using SpecialHedgehog.Scripts.Time;
+using SpecialHedgehog.Abilities;
+using SpecialHedgehog.Attack;
+using SpecialHedgehog.Cameras;
+using SpecialHedgehog.Damage;
+using SpecialHedgehog.Death;
+using SpecialHedgehog.Framework.Configuration;
+using SpecialHedgehog.Framework.Physics;
+using SpecialHedgehog.Framework.Services;
+using SpecialHedgehog.Health;
+using SpecialHedgehog.Hero;
+using SpecialHedgehog.Input;
+using SpecialHedgehog.Mobs;
+using SpecialHedgehog.Movement;
+using SpecialHedgehog.PickUps;
+using SpecialHedgehog.Projectiles;
+using SpecialHedgehog.Time;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework
+namespace SpecialHedgehog.Framework
 {
     public class EcsStartup : Singleton<EcsStartup>
     {
@@ -69,6 +70,8 @@ namespace SpecialHedgehog.Scripts.Framework
                 
                 .Add(new HeroSpawnSystem())
                 
+                .Add(new GemWalletInitSystem())
+                
                 .Add(new CameraInitSystem())
                 ;
 
@@ -108,9 +111,12 @@ namespace SpecialHedgehog.Scripts.Framework
                     .DelHere<Damaged>()
                 .Add(new MakeDamageSystem())
                     .DelHere<MakeDamageRequest>(Constants.Worlds.Events)
-                .Add(new DeathSystem())
                 
-                .Add(new HealthbarUpdateSystem())
+                .Add(new GemSpawnSystem())
+                .Add(new GemPickUpSystem())
+                    .DelHere<PickedUp>()
+                
+                .Add(new DeathSystem())
                 
                 .Add(new Rigidbody2DMovement())
                 
@@ -138,7 +144,9 @@ namespace SpecialHedgehog.Scripts.Framework
             _lateUpdateSystems = new EcsSystems(_mainWorld)
                 .AddWorld(_eventWorld, Constants.Worlds.Events)
                 
-                
+                .Add(new HealthbarUIUpdateSystem())
+                .Add(new WalletUIUpdateSystem())
+                    .DelHere<ValueChanged>()
                 ;
 
             _lateUpdateSystems

@@ -1,7 +1,7 @@
-﻿using SpecialHedgehog.Scripts.Framework;
+﻿using SpecialHedgehog.Framework;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Hero
+namespace SpecialHedgehog.Hero
 {
     public class HeroView : EntityOwner
     {

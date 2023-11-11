@@ -1,9 +1,9 @@
 ﻿using BaboonAndCo.Extensions;
 using Leopotam.EcsLite;
-using SpecialHedgehog.Scripts.Framework;
+using SpecialHedgehog.Framework;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Projectiles
+namespace SpecialHedgehog.Projectiles
 {
     public class ProjectileView : EntityOwner
     {

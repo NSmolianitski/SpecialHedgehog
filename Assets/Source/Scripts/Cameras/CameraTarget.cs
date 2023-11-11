@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Cameras
+namespace SpecialHedgehog.Cameras
 {
     public struct CameraTarget
     {

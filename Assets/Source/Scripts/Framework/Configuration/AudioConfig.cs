@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework.Configuration
+namespace SpecialHedgehog.Framework.Configuration
 {
     [CreateAssetMenu(fileName = "Audio Configuration", menuName = "Data/Audio Configuration", order = 1)]
     public class AudioConfig : ScriptableObject

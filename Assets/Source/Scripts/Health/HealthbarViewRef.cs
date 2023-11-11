@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Health
+﻿namespace SpecialHedgehog.Health
 {
     public struct HealthbarViewRef
     {

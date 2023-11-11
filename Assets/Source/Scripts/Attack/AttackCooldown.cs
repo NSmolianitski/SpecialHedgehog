@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Attack
+﻿namespace SpecialHedgehog.Attack
 {
     public struct AttackCooldown
     {

@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Damage;
-using SpecialHedgehog.Scripts.Death;
-using SpecialHedgehog.Scripts.Framework;
+using SpecialHedgehog.Damage;
+using SpecialHedgehog.Death;
+using SpecialHedgehog.Framework;
 
-namespace SpecialHedgehog.Scripts.Projectiles
+namespace SpecialHedgehog.Projectiles
 {
     public class ProjectileEnemyHitSystem : IEcsRunSystem
     {

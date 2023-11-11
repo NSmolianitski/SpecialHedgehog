@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework;
+using SpecialHedgehog.Framework;
 
-namespace SpecialHedgehog.Scripts.Cameras
+namespace SpecialHedgehog.Cameras
 {
     public class CameraInitSystem : IEcsInitSystem
     {

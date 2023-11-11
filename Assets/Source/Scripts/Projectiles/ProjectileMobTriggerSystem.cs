@@ -1,13 +1,13 @@
 ﻿using BaboonAndCo.Extensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Damage;
-using SpecialHedgehog.Scripts.Death;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Framework.Physics.Events;
-using SpecialHedgehog.Scripts.Mobs;
+using SpecialHedgehog.Damage;
+using SpecialHedgehog.Death;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Framework.Physics.Events;
+using SpecialHedgehog.Mobs;
 
-namespace SpecialHedgehog.Scripts.Projectiles
+namespace SpecialHedgehog.Projectiles
 {
     public class ProjectileMobTriggerSystem : IEcsRunSystem
     {

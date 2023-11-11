@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Damage
+﻿namespace SpecialHedgehog.Damage
 {
     public struct Damaged {}
 }

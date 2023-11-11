@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace SpecialHedgehog.Scripts.Extensions
+namespace SpecialHedgehog.Extensions
 {
     public static class LeoEcsLiteExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace SpecialHedgehog.Scripts.Projectiles
+namespace SpecialHedgehog.Projectiles
 {
     public struct FirstEnemyHit
     {

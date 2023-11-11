@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Movement
+namespace SpecialHedgehog.Movement
 {
     public struct Direction
     {

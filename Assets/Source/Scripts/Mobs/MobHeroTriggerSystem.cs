@@ -1,11 +1,11 @@
 ﻿using BaboonAndCo.Extensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Framework.Physics.Events;
-using SpecialHedgehog.Scripts.Hero;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Framework.Physics.Events;
+using SpecialHedgehog.Hero;
 
-namespace SpecialHedgehog.Scripts.Mobs
+namespace SpecialHedgehog.Mobs
 {
     public class MobHeroTriggerSystem : IEcsRunSystem
     {

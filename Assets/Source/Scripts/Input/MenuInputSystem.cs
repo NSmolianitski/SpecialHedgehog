@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace SpecialHedgehog.Scripts.Input
+namespace SpecialHedgehog.Input
 {
     public class MenuInputSystem : IEcsRunSystem
     {

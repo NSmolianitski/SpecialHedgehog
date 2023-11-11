@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Framework
+namespace SpecialHedgehog.Framework
 {
     public abstract class EntityOwner : MonoBehaviour
     {

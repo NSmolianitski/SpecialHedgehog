@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework.Services;
+using SpecialHedgehog.Framework.Services;
 
-namespace SpecialHedgehog.Scripts.Attack
+namespace SpecialHedgehog.Attack
 {
     public class AttackCooldownReduceSystem : IEcsRunSystem
     {

@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts
+﻿namespace SpecialHedgehog
 {
     public class AudioOption
     {

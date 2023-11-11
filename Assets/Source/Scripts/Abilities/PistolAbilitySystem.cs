@@ -1,15 +1,15 @@
 ﻿using BaboonAndCo.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Framework.Configuration;
-using SpecialHedgehog.Scripts.Framework.Services;
-using SpecialHedgehog.Scripts.Mobs;
-using SpecialHedgehog.Scripts.Projectiles;
-using SpecialHedgehog.Scripts.UnityRefs;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Framework.Configuration;
+using SpecialHedgehog.Framework.Services;
+using SpecialHedgehog.Mobs;
+using SpecialHedgehog.Projectiles;
+using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Abilities
+namespace SpecialHedgehog.Abilities
 {
     public class PistolAbilitySystem : IEcsRunSystem
     {

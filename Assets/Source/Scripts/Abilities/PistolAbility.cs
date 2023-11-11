@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Abilities
+﻿namespace SpecialHedgehog.Abilities
 {
     public struct PistolAbility
     {

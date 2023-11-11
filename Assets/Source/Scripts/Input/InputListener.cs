@@ -1,4 +1,4 @@
-﻿namespace SpecialHedgehog.Scripts.Input
+﻿namespace SpecialHedgehog.Input
 {
     public struct InputListener {}
 }

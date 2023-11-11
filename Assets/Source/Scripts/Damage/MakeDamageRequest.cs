@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace SpecialHedgehog.Scripts.Damage
+namespace SpecialHedgehog.Damage
 {
     public struct MakeDamageRequest
     {

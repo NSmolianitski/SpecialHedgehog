@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5575350296734316730}
   - component: {fileID: 5575350296734316731}
-  - component: {fileID: 5575350296734316728}
   m_Layer: 7
   m_Name: Main Trigger
   m_TagString: Untagged
@@ -49,18 +48,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.2, y: 0.4}
   m_Direction: 0
---- !u!114 &5575350296734316728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5575350296734316741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 771a73e196464e52bf55d7d47ac7cb35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5575350297116973131
 GameObject:
   m_ObjectHideFlags: 0

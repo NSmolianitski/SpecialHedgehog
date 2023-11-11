@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework.Services;
-using SpecialHedgehog.Scripts.UnityRefs;
+using SpecialHedgehog.Framework.Services;
+using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Death
+namespace SpecialHedgehog.Death
 {
     public class DeathSystem : IEcsRunSystem
     {

@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Framework.Services;
-using SpecialHedgehog.Scripts.Input;
+using SpecialHedgehog.Framework.Services;
+using SpecialHedgehog.Input;
 
-namespace SpecialHedgehog.Scripts.Movement
+namespace SpecialHedgehog.Movement
 {
     public class InputToDirectionSystem : IEcsRunSystem
     {

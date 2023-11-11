@@ -1,14 +1,14 @@
 ﻿using BaboonAndCo.Extensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using SpecialHedgehog.Scripts.Damage;
-using SpecialHedgehog.Scripts.Framework;
-using SpecialHedgehog.Scripts.Framework.Configuration;
-using SpecialHedgehog.Scripts.Movement;
-using SpecialHedgehog.Scripts.UnityRefs;
+using SpecialHedgehog.Damage;
+using SpecialHedgehog.Framework;
+using SpecialHedgehog.Framework.Configuration;
+using SpecialHedgehog.Movement;
+using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
-namespace SpecialHedgehog.Scripts.Mobs
+namespace SpecialHedgehog.Mobs
 {
     public class MobSpawnSystem : IEcsInitSystem, IEcsRunSystem
     {
