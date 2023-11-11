@@ -2,7 +2,6 @@ using BaboonAndCo.Patterns;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
-using Leopotam.EcsLite.Unity.Ugui;
 using Leopotam.EcsLite.UnityEditor;
 using SpecialHedgehog.Scripts.Abilities;
 using SpecialHedgehog.Scripts.Attack;
@@ -27,7 +26,6 @@ namespace SpecialHedgehog.Scripts.Framework
     {
         [SerializeField] private GameConfig config;
         [SerializeField] private SceneData sceneData;
-        [SerializeField] private EcsUguiEmitter uiEmitter;
 
         private EcsWorld _mainWorld;
         private EcsWorld _eventWorld;
@@ -119,7 +117,6 @@ namespace SpecialHedgehog.Scripts.Framework
                 ;
 
             _updateSystems
-                .InjectUgui(uiEmitter)
                 .Inject(shared)
                 .Init();
         }
