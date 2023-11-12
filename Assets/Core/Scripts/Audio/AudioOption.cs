@@ -1,8 +1,8 @@
-﻿namespace SpecialHedgehog
+﻿namespace SpecialHedgehog.Audio
 {
     public class AudioOption
     {
-        public AudioManager.OptionType Type;
+        public AudioService.OptionType Type;
         public string Key;
         public bool IsEnabled;
     }

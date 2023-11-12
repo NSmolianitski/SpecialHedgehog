@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace SpecialHedgehog
+namespace SpecialHedgehog.Audio
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioService : MonoBehaviour
     {
         private enum SoundState
         {
@@ -20,6 +20,8 @@ namespace SpecialHedgehog
         }
     
         [SerializeField] private AudioMixer audioMixer;
+        [SerializeField] private AudioSource musicAudioSource;
+        [SerializeField] private AudioSource soundsAudioSource;
 
         private bool _allSoundsEnabled;
         private bool _musicEnabled;
@@ -43,6 +45,17 @@ namespace SpecialHedgehog
 
             var soundState = isEnabled ? SoundState.Enabled : SoundState.Disabled;
             audioMixer.SetFloat(audioOption.Key, (int) soundState);
+        }
+
+        public void PlaySoundAtPoint(AudioClip clip, Vector3 point)
+        {
+            soundsAudioSource.transform.position = point;
+            soundsAudioSource.PlayOneShot(clip);
+        }
+
+        public void PlayMusic(AudioClip clip)
+        {
+            musicAudioSource.Play();
         }
     }
 }
