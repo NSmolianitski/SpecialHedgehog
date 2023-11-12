@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: Game Config
   m_EditorClassIdentifier: 
   <HeroViewPrefab>k__BackingField: {fileID: 7939132718103258933, guid: ed24df4561b6e44489883a86447fb523, type: 3}
-  <HeroSpeed>k__BackingField: 4
-  <HeroHealth>k__BackingField: 100
+  <ShootSounds>k__BackingField:
+  - {fileID: 8300000, guid: fec140e71af4f2044bf2ded7825baaf1, type: 3}
+  - {fileID: 8300000, guid: 0b07a93faf6f52240be23b3c58b2fb8f, type: 3}
+  - {fileID: 8300000, guid: dae61da06a5a0024f992b43c187ad646, type: 3}
+  - {fileID: 8300000, guid: eed6f28785ce70e46b49eaa2fc0851bb, type: 3}
+  - {fileID: 8300000, guid: bff97f9d84ab2db4c8c87678ba88d110, type: 3}
+  - {fileID: 8300000, guid: e9a355bf460971b489efa76abf8d6e61, type: 3}
   <MobViewPrefab>k__BackingField: {fileID: 1563155862720492325, guid: df2f7fbcf5eabe84da3cc745ef558e74, type: 3}
-  <MobSpeed>k__BackingField: 3
-  <MobDamage>k__BackingField: 1
-  <MobHealth>k__BackingField: 20
-  <MobAttackCooldown>k__BackingField: 0.3
   <ProjectilePrefab>k__BackingField: {fileID: 5575350297116973129, guid: 78aee77586f153440b130a556c5146d3, type: 3}
   <ProjectileSpeed>k__BackingField: 10
   <ProjectileDamage>k__BackingField: 20
   <GemPrefab>k__BackingField: {fileID: 3200956715852139743, guid: 4f85cdeef16fcea49b0871001e17964f, type: 3}
+  <GemPrice>k__BackingField: 10
+  <GemPickUpSounds>k__BackingField:
+  - {fileID: 8300000, guid: 19052cae28865e94d9aba598e20200b2, type: 3}
+  <Music>k__BackingField: {fileID: 8300000, guid: 8c654f6eefa003842bc430234f9ef6bb, type: 3}

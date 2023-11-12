@@ -17,6 +17,7 @@ namespace SpecialHedgehog.PickUps
         private EcsPoolInject<Gem> _gemPool;
         private EcsPoolInject<Pickable> _pickablePool;
         private EcsPoolInject<Price> _pricePool;
+        private EcsPoolInject<PickUpSounds> _pickUpSoundsPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         private EcsCustomInject<SceneData> _sceneData;
@@ -40,6 +41,9 @@ namespace SpecialHedgehog.PickUps
 
                 ref var gemTransformRef = ref _transformRefPool.Value.Add(gemEntity);
                 gemTransformRef.Value = gemView.transform;
+
+                ref var pickUpSounds = ref _pickUpSoundsPool.Value.Add(gemEntity);
+                pickUpSounds.AudioClips = _gameConfig.Value.GemPickUpSounds;
             }
         }
     }

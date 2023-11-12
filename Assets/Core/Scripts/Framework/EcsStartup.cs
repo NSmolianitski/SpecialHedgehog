@@ -118,9 +118,13 @@ namespace SpecialHedgehog.Framework
                 
                 .Add(new GemSpawnSystem())
                 .Add(new GemPickUpSystem())
+                .Add(new PickUpSoundSystem())
                     .DelHere<PickedUp>()
                 
+                .Add(new HitSoundSystem())
                 .Add(new DeathAudioSystem())
+                .Add(new BackgroundMusicSystem())
+                
                 .Add(new DeathSystem())
                 
                 .Add(new Rigidbody2DMovement())

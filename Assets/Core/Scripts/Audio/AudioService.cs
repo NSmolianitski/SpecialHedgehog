@@ -52,9 +52,18 @@ namespace SpecialHedgehog.Audio
             soundsAudioSource.transform.position = point;
             soundsAudioSource.PlayOneShot(clip);
         }
+        
+        public void PlayInterruptibleSoundAtPoint(AudioClip clip, Vector3 point)
+        {
+            soundsAudioSource.transform.position = point;
+            soundsAudioSource.clip = clip;
+            soundsAudioSource.Play();
+        }
 
         public void PlayMusic(AudioClip clip)
         {
+            musicAudioSource.clip = clip;
+            musicAudioSource.time = 1;
             musicAudioSource.Play();
         }
     }

@@ -25,6 +25,7 @@ namespace SpecialHedgehog.Mobs
         private EcsPoolInject<Health.Health> _healthPool;
         private EcsPoolInject<DeathSounds> _deathSoundsPool;
         private EcsPoolInject<AttackCooldown> _attackCooldownPool;
+        private EcsPoolInject<HitSounds> _hitSoundsPool;
 
         private EcsWorld _world;
         
@@ -78,6 +79,9 @@ namespace SpecialHedgehog.Mobs
 
             ref var attackCooldown = ref _attackCooldownPool.Value.Add(mobEntity);
             attackCooldown.CooldownTime = mobView.Config.AttackCooldown;
+            
+            ref var hitSounds = ref _hitSoundsPool.Value.Add(mobEntity);
+            hitSounds.AudioClips = mobView.Config.HitSounds;
             
             _mobPool.Value.Add(mobEntity);
             _directionPool.Value.Add(mobEntity);

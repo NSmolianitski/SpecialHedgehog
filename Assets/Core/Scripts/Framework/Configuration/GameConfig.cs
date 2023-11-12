@@ -11,6 +11,7 @@ namespace SpecialHedgehog.Framework.Configuration
     {
         [field: Header("Hero")]
         [field: SerializeField] public HeroView HeroViewPrefab { get; private set; }
+        [field: SerializeField] public AudioClip[] ShootSounds { get; private set; }
         
         [field: Header("Mobs")]
         [field: SerializeField] public MobView MobViewPrefab { get; private set; }
@@ -20,8 +21,11 @@ namespace SpecialHedgehog.Framework.Configuration
         [field: SerializeField] public float ProjectileSpeed { get; private set; } = 300;
         [field: SerializeField] public float ProjectileDamage { get; private set; } = 10;
         
-        [field: Header("Projectiles")]
+        [field: Header("Gems")]
         [field: SerializeField] public PickableView GemPrefab { get; private set; }
         [field: SerializeField] public float GemPrice { get; private set; } = 10;
+        [field: SerializeField] public AudioClip[] GemPickUpSounds { get; private set; }
+        
+        [field: SerializeField] public AudioClip Music { get; private set; }
     }
 }

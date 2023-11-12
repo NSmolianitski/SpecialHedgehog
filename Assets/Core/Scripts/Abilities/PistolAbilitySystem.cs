@@ -1,6 +1,8 @@
-﻿using BaboonAndCo.Utils;
+﻿using BaboonAndCo.Extensions;
+using BaboonAndCo.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using SpecialHedgehog.Audio;
 using SpecialHedgehog.Framework;
 using SpecialHedgehog.Framework.Configuration;
 using SpecialHedgehog.Framework.Services;
@@ -21,6 +23,7 @@ namespace SpecialHedgehog.Abilities
         
         private EcsCustomInject<TimeService> _timeService;
         private EcsCustomInject<GameConfig> _gameConfig;
+        private EcsCustomInject<AudioService> _audioService;
         
         public void Run(IEcsSystems systems)
         {
@@ -43,6 +46,8 @@ namespace SpecialHedgehog.Abilities
                 projectileSpawnRequest.Prefab = _gameConfig.Value.ProjectilePrefab;
                 projectileSpawnRequest.SpawnPoint = transformRef.Value.position;
                 projectileSpawnRequest.Direction = closestEnemy.transform.position - transformRef.Value.position;
+                
+                _audioService.Value.PlaySoundAtPoint(_gameConfig.Value.ShootSounds.GetRandom(), transformRef.Value.position);
 
                 ability.Cooldown = 1;
             }

@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Abilities;
 using SpecialHedgehog.Audio.Sounds;
 using SpecialHedgehog.Cameras;
+using SpecialHedgehog.Damage;
 using SpecialHedgehog.Framework.Configuration;
 using SpecialHedgehog.Health;
 using SpecialHedgehog.Input;
@@ -29,6 +30,7 @@ namespace SpecialHedgehog.Hero
         private EcsPoolInject<PistolAbility> _pistolAbilityPool;
         private EcsPoolInject<GemWalletOwner> _gemWalletOwnerPool;
         private EcsPoolInject<DeathSounds> _deathSoundsPool;
+        private EcsPoolInject<HitSounds> _hitSoundsPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         
@@ -67,6 +69,9 @@ namespace SpecialHedgehog.Hero
 
             ref var deathSounds = ref _deathSoundsPool.Value.Add(heroEntity);
             deathSounds.AudioClips = heroView.Config.DeathSounds;
+
+            ref var hitSounds = ref _hitSoundsPool.Value.Add(heroEntity);
+            hitSounds.AudioClips = heroView.Config.HitSounds;
             
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);

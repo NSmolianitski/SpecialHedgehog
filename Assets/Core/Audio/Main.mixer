@@ -48,7 +48,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Effects
+  m_Name: Sounds
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 684decbe208d66d4aaf3a5fae3f177fc
   m_Children: []
@@ -61,6 +61,22 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-803373978368930369
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c5597b67c06b7a1438fe05d1b5425d22
+  m_EffectName: Highpass Simple
+  m_MixLevel: 9e815ab553de4874996df9c58df4a140
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: fea5a9f464e75ce4fa44cdd2e3856f06
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -78,7 +94,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 086dcb98076e19446a2d0af70bba27f5
-    name: Effects Volume
+    name: Sounds Volume
   - guid: e207b7b84d436b846bf718921a7124e5
     name: Interface Volume
   - guid: 59ec07fea97324b44a7444127e2d2271
@@ -137,7 +153,39 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ad6ac1ab062dc4f4d9dbd8974fd7bd97
-  m_FloatValues: {}
+  m_FloatValues:
+    17983be19d2fe5b43bae32a78cc25627: 631
+    2b81d8229e241874a936f8c5bc764f4c: -6654
+    4dacea62c0a62a04481e497abd16103e: 0.59
+    6e239cf2eebd34542b0ca9c9217671dd: 0
+    14ea6643f55bee24e9153da1017a51c7: 648
+    582a28933683ddc4fa61318b7599ea91: 20000
+    caa8489327af2934fa71c4b446bf81f8: 0.867
+    137c91240b645014b94da7d5e81406ed: 1059
+    88abda94ae7d14342afa3dee791794f2: 487
+    1fb4f21589d108c46bbe9f201eeb64d9: -2796
+    1fd73c15336df8f4c9c4157e22aa2358: 4.5
+    dc83f2e5fcd290641a1833b22e5a0f2b: 1
+    83c181562e2edea46b8b43b4c1fba8ca: 0
+    2f59a2d6f2bc1e540bb2f194745ecd08: 0.0637
+    a69fc9c81f152db4c9d9f9c497c5888b: 0.218
+    4fb24b490737e9f458c46c178e1839a8: -0
+    7c7a6b6900e36ad4e826431dd944441e: 0.06
+    5081c4ba37a0a8b42a413ba30b4c36bd: 2
+    ce9a26fa3a79e3a4eac6a49ba0f25b55: 5.82
+    67a1fcfa61d89e6458f06a2dbef03dae: 5.15
+    e4dfd93b96baaac43a75d93b47f86065: 1
+    d4689b3be1f20254bab23b5307cd87f0: -892
+    29d6cedb491bb9a448ea757b63f6052f: -3985
+    a429eedba71740048bee0426604916b3: 2.45
+    0b7c2d1cc6ea3c542b0f2cffc1db0368: 0.06
+    d69bb7cccb1f89f468dd339956d3d00d: 1
+    8c20d93e007e6c34c8a53a7b8968badd: 32.8
+    18060fce50b078d41a7085a57e3525a4: 22.6
+    ead861ee2b919e14c82a742c0c903ec1: 1144
+    59ec07fea97324b44a7444127e2d2271: -5.3230715
+    85b68aafdf6730142ba74da4fc0e8e12: 0
+    6b5bebffcbf905b4db99ba5a51c7391f: 237
   m_TransitionOverrides: {}
 --- !u!243 &5146410052629608174
 AudioMixerGroupController:
