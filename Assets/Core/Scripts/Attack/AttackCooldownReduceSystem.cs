@@ -6,9 +6,10 @@ namespace SpecialHedgehog.Attack
 {
     public class AttackCooldownReduceSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<AttackCooldown>> _attackCooldownFilter;
+        private EcsFilterInject<Inc<AttackCooldown, AttackOnCooldown>> _attackCooldownFilter;
 
         private EcsPoolInject<AttackCooldown> _attackCooldownPool;
+        private EcsPoolInject<AttackOnCooldown> _attackOnCooldownPool;
 
         private EcsCustomInject<TimeService> _timeService;
         
@@ -20,7 +21,7 @@ namespace SpecialHedgehog.Attack
                 cooldown.TimeRemaining -= _timeService.Value.DeltaTime;
                 
                 if (cooldown.TimeRemaining <= 0)
-                    _attackCooldownPool.Value.Del(entity);
+                    _attackOnCooldownPool.Value.Del(entity);
             }
         }
     }

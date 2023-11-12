@@ -24,6 +24,9 @@ namespace SpecialHedgehog.Mobs
                 target = mobTarget.TargetTransform;
             }
             
+            if (target is null)
+                return;
+            
             foreach (var entity in _enemyFilter.Value)
             {
                 ref var transformRef = ref _transformRefPool.Value.Get(entity);

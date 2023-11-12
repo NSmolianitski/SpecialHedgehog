@@ -14,6 +14,7 @@ namespace SpecialHedgehog.Damage
         
         private EcsPoolInject<Health.Health> _healthPool;
         private EcsPoolInject<Dead> _deadPool;
+        private EcsPoolInject<JustDied> _justDiedPool;
         private EcsPoolInject<Damaged> _damagedPool;
 
         private EcsWorldInject _world;
@@ -33,6 +34,7 @@ namespace SpecialHedgehog.Damage
                 {
                     health.Current = 0;
                     _deadPool.Value.TryAdd(damageTargetEntity);
+                    _justDiedPool.Value.TryAdd(damageTargetEntity);
                 }
 
                 _damagedPool.Value.TryAdd(damageTargetEntity);

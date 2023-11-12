@@ -3,21 +3,19 @@ using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Attack;
 using SpecialHedgehog.Damage;
 using SpecialHedgehog.Framework;
-using SpecialHedgehog.Framework.Configuration;
 
 namespace SpecialHedgehog.Mobs
 {
     public class MobAttackSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EnemyNearby, Mob, DamageStat>, Exc<AttackCooldown>> _filter;
+        private EcsFilterInject<Inc<EnemyNearby, Mob, AttackCooldown, DamageStat>, Exc<AttackOnCooldown>> _filter;
 
         private EcsPoolInject<MakeDamageRequest> _makeDamageRequestPool = Constants.Worlds.Events;
         private EcsPoolInject<DamageStat> _damageStatPool;
         private EcsPoolInject<AttackCooldown> _attackCooldownPool;
+        private EcsPoolInject<AttackOnCooldown> _attackOnCooldownPool;
         private EcsPoolInject<EnemyNearby> _enemyNearbyPool;
 
-        private EcsCustomInject<GameConfig> _gameConfig;
-        
         private EcsWorldInject _world;
         
         public void Run(IEcsSystems systems)
@@ -32,8 +30,10 @@ namespace SpecialHedgehog.Mobs
                 request.Target = enemyNearby.EnemyPackedEntity;
                 request.Value = damageStat.CurrentValue;
 
-                ref var attackCooldown = ref _attackCooldownPool.Value.Add(entity);
-                attackCooldown.TimeRemaining = _gameConfig.Value.MobAttackCooldown;
+                ref var attackCooldown = ref _attackCooldownPool.Value.Get(entity);
+                attackCooldown.TimeRemaining = attackCooldown.CooldownTime;
+                
+                _attackOnCooldownPool.Value.Add(entity);
             }
         }
     }

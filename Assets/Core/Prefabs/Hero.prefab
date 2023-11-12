@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SpriteRenderer>k__BackingField: {fileID: 5727737962414760490}
   <Rigidbody2D>k__BackingField: {fileID: 982571495720988789}
+  <Config>k__BackingField: {fileID: 11400000, guid: bf1b2db4ea99ccb458d43c25bb39de73, type: 2}
 --- !u!1 &2775663479835712090
 GameObject:
   m_ObjectHideFlags: 0

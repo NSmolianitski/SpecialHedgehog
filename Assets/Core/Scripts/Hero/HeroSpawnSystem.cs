@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Abilities;
+using SpecialHedgehog.Audio.Sounds;
 using SpecialHedgehog.Cameras;
 using SpecialHedgehog.Framework.Configuration;
 using SpecialHedgehog.Health;
@@ -27,6 +28,7 @@ namespace SpecialHedgehog.Hero
         private EcsPoolInject<HealthbarViewRef> _healthbarViewRefPool;
         private EcsPoolInject<PistolAbility> _pistolAbilityPool;
         private EcsPoolInject<GemWalletOwner> _gemWalletOwnerPool;
+        private EcsPoolInject<DeathSounds> _deathSoundsPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         
@@ -48,7 +50,7 @@ namespace SpecialHedgehog.Hero
             transformRef.Value = heroView.transform;
 
             ref var speed = ref _speedPool.Value.Add(heroEntity);
-            speed.Value = _gameConfig.Value.HeroSpeed;
+            speed.Value = heroView.Config.HeroSpeed;
 
             ref var cameraTarget = ref _cameraTargetPool.Value.Add(heroEntity);
             cameraTarget.TargetTransform = heroView.transform;
@@ -57,11 +59,14 @@ namespace SpecialHedgehog.Hero
             enemyTarget.TargetTransform = heroView.transform;
             
             ref var health = ref _healthPool.Value.Add(heroEntity);
-            health.Max = _gameConfig.Value.HeroHealth;
+            health.Max = heroView.Config.HeroHealth;
             health.Current = health.Max;
 
             ref var healthbarRef = ref _healthbarViewRefPool.Value.Add(heroEntity);
             healthbarRef.Value = Object.FindObjectOfType<HealthbarView>(); // TODO: Replace FindObjectOfType
+
+            ref var deathSounds = ref _deathSoundsPool.Value.Add(heroEntity);
+            deathSounds.AudioClips = heroView.Config.DeathSounds;
             
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);

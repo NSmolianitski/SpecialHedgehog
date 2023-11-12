@@ -7,5 +7,6 @@ namespace SpecialHedgehog.Hero
     {
         [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
+        [field: SerializeField] public HeroConfig Config { get; private set; }
     }
 }

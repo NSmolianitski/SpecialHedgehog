@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae240fee290e46ef8d78cf19a9b80ce7, type: 3}
+  m_Name: Hero Config
+  m_EditorClassIdentifier: 
+  <HeroSpeed>k__BackingField: 5
+  <HeroHealth>k__BackingField: 100
+  <DeathSounds>k__BackingField:
+  - {fileID: 8300000, guid: cc5807b35d7d70f4fa8e3b196bf3e591, type: 3}
+  - {fileID: 8300000, guid: b57e7024dbc3a184eb3fcf36ec9b5b7d, type: 3}
+  - {fileID: 8300000, guid: 9884d03cf51a3a848bc74160c742b447, type: 3}
+  - {fileID: 8300000, guid: b041ff52c45727f4080138f4c7d20183, type: 3}
+  - {fileID: 8300000, guid: ae99230738920024aad2f877bb913c20, type: 3}
+  - {fileID: 8300000, guid: 86e62476b0d40f747a214dc0aff54f3b, type: 3}
+  - {fileID: 8300000, guid: e07fddbf2051fe847b2604eab9f70b47, type: 3}
+  - {fileID: 8300000, guid: 820e4dc88ed77224288f2d625ce4ab4e, type: 3}
+  <HitSounds>k__BackingField:
+  - {fileID: 8300000, guid: cc5807b35d7d70f4fa8e3b196bf3e591, type: 3}
+  - {fileID: 8300000, guid: b57e7024dbc3a184eb3fcf36ec9b5b7d, type: 3}
+  - {fileID: 8300000, guid: 9884d03cf51a3a848bc74160c742b447, type: 3}
+  - {fileID: 8300000, guid: b041ff52c45727f4080138f4c7d20183, type: 3}
+  - {fileID: 8300000, guid: ae99230738920024aad2f877bb913c20, type: 3}
+  - {fileID: 8300000, guid: 86e62476b0d40f747a214dc0aff54f3b, type: 3}
+  - {fileID: 8300000, guid: e07fddbf2051fe847b2604eab9f70b47, type: 3}
+  - {fileID: 8300000, guid: 820e4dc88ed77224288f2d625ce4ab4e, type: 3}
+  <StepSounds>k__BackingField:
+  - {fileID: 8300000, guid: a05669728bff96542afcf9b6041b5478, type: 3}
+  - {fileID: 8300000, guid: 9a4c07c9c465ce14a809b8062db3ca4b, type: 3}
+  - {fileID: 8300000, guid: 44364cf701d179c47832b85edfc37cc8, type: 3}
+  - {fileID: 8300000, guid: 4c1afd01478043a47add5b0ed3a48518, type: 3}

@@ -5,6 +5,7 @@ using Leopotam.EcsLite.ExtendedSystems;
 using Leopotam.EcsLite.UnityEditor;
 using SpecialHedgehog.Abilities;
 using SpecialHedgehog.Attack;
+using SpecialHedgehog.Audio;
 using SpecialHedgehog.Cameras;
 using SpecialHedgehog.Damage;
 using SpecialHedgehog.Death;
@@ -27,6 +28,7 @@ namespace SpecialHedgehog.Framework
     {
         [SerializeField] private GameConfig config;
         [SerializeField] private SceneData sceneData;
+        [SerializeField] private AudioService audioService;
 
         private EcsWorld _mainWorld;
         private EcsWorld _eventWorld;
@@ -54,7 +56,8 @@ namespace SpecialHedgehog.Framework
                 config,
                 timeService,
                 inputService,
-                inputMaster
+                inputMaster,
+                audioService
             };
 
             InitSystems(shared);
@@ -109,6 +112,7 @@ namespace SpecialHedgehog.Framework
                     .DelHere<FirstEnemyHit>()
                 
                     .DelHere<Damaged>()
+                    .DelHere<JustDied>()
                 .Add(new MakeDamageSystem())
                     .DelHere<MakeDamageRequest>(Constants.Worlds.Events)
                 
@@ -116,6 +120,7 @@ namespace SpecialHedgehog.Framework
                 .Add(new GemPickUpSystem())
                     .DelHere<PickedUp>()
                 
+                .Add(new DeathAudioSystem())
                 .Add(new DeathSystem())
                 
                 .Add(new Rigidbody2DMovement())
