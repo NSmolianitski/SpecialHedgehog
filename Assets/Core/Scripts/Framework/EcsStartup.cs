@@ -20,6 +20,7 @@ using SpecialHedgehog.Movement;
 using SpecialHedgehog.PickUps;
 using SpecialHedgehog.Projectiles;
 using SpecialHedgehog.Time;
+using SpecialHedgehog.Waves;
 using UnityEngine;
 
 namespace SpecialHedgehog.Framework
@@ -105,7 +106,9 @@ namespace SpecialHedgehog.Framework
                 .Add(new ProjectileSpawnSystem())
                     .DelHere<ProjectileSpawnRequest>(Constants.Worlds.Events)
                 
+                .Add(new WaveSpawnSystem())
                 .Add(new MobSpawnSystem())
+                    .DelHere<MobSpawnRequest>(Constants.Worlds.Events)
                 .Add(new MobDirectionUpdateSystem())
                 .Add(new AttackCooldownReduceSystem())
                 .Add(new MobAttackSystem())

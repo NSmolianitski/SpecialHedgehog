@@ -14,7 +14,7 @@ namespace SpecialHedgehog.Mobs
 {
     public class MobSpawnSystem : IEcsInitSystem, IEcsRunSystem
     {
-        // private EcsFilterInject<Inc<Spawn>> _enemyFilter;
+        private EcsFilterInject<Inc<MobSpawnRequest>> _filter = Constants.Worlds.Events;
 
         private EcsPoolInject<Mob> _mobPool;
         private EcsPoolInject<Direction> _directionPool;
@@ -44,8 +44,10 @@ namespace SpecialHedgehog.Mobs
 #if UNITY_EDITOR
         public void Run(IEcsSystems systems)
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            foreach (var entity in _filter.Value)
+            {
                 SpawnEnemy();
+            }
         }
 #endif
 
