@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Death;
+using SpecialHedgehog.Extensions;
 
 namespace SpecialHedgehog.PickUps
 {
@@ -31,7 +32,7 @@ namespace SpecialHedgehog.PickUps
                 
                 ref var wallet = ref _walletPool.Value.Get(gemWalletEntity);
                 wallet.CurrentValue += price.Value;
-                _valueChangedPool.Value.Add(gemWalletEntity);
+                _valueChangedPool.Value.TryAdd(gemWalletEntity);
                 
                 _dead.Value.Add(entity);
             }
