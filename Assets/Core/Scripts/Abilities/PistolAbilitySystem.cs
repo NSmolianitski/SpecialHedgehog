@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using BaboonAndCo.Extensions;
-using BaboonAndCo.Utils;
+﻿using BaboonAndCo.Extensions;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Audio;
@@ -39,9 +37,9 @@ namespace SpecialHedgehog.Abilities
                 ref var transformRef = ref _transformRefPool.Value.Get(entity);
                 var position = transformRef.Value.position;
     
-                var closestEnemy = GetClosestTargetToUnit(_mobFilter.Value.GetRawEntities(), position);
-                if (closestEnemy is null)
+                if (_mobFilter.Value.GetEntitiesCount() is 0)
                     continue;
+                var closestEnemy = GetClosestTargetToUnit(position);
                 
                 ref var projectileSpawnRequest = ref _projectileSpawnRequestPool.NewEntity(out _);
                 projectileSpawnRequest.Damage = _gameConfig.Value.ProjectileDamage;
@@ -56,14 +54,16 @@ namespace SpecialHedgehog.Abilities
             }
         }
         
-        private Transform GetClosestTargetToUnit(IEnumerable<int> transformRefEntities, Vector3 unitPosition)
+        private Transform GetClosestTargetToUnit(Vector3 unitPosition)
         {
+            var rawEntities = _mobFilter.Value.GetRawEntities();
+            
             Transform bestTarget = null;
             float closestDistanceSqr = Mathf.Infinity;
             
-            foreach(var entity in transformRefEntities)
+            for (var i = 0; i < _mobFilter.Value.GetEntitiesCount(); ++i)
             {
-                ref var transformRef = ref _transformRefPool.Value.Get(entity);
+                ref var transformRef = ref _transformRefPool.Value.Get(rawEntities[i]);
                 var directionToTarget = transformRef.Value.position - unitPosition;
                 
                 var directionToTargetSqr = directionToTarget.sqrMagnitude;
