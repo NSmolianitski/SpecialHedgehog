@@ -1,5 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using SpecialHedgehog.Framework.Services;
+using SpecialHedgehog.UI;
 using UnityEngine;
 
 namespace SpecialHedgehog.PickUps
@@ -14,6 +16,8 @@ namespace SpecialHedgehog.PickUps
         private EcsPoolInject<WalletViewRef> _walletViewRefPool;
         private EcsPoolInject<ValueChanged> _valueChangedPool;
 
+        private EcsCustomInject<UIService> _uiService;
+        
         private EcsWorldInject _world;
 
         public void Init(IEcsSystems systems)
@@ -27,7 +31,7 @@ namespace SpecialHedgehog.PickUps
                 _valueChangedPool.Value.Add(walletEntity);
                 
                 ref var walletViewRef = ref _walletViewRefPool.Value.Add(walletEntity);
-                walletViewRef.Value = Object.FindObjectOfType<WalletView>();
+                walletViewRef.Value = _uiService.Value.GetScreen<PlayerWalletScreen>().GemWallet;
                 
                 gemWalletOwner.WalletPackedEntity = _world.Value.PackEntity(walletEntity);
             }

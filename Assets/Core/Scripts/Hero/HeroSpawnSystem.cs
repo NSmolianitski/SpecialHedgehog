@@ -5,11 +5,13 @@ using SpecialHedgehog.Audio.Sounds;
 using SpecialHedgehog.Cameras;
 using SpecialHedgehog.Damage;
 using SpecialHedgehog.Framework.Configuration;
+using SpecialHedgehog.Framework.Services;
 using SpecialHedgehog.Health;
 using SpecialHedgehog.Input;
 using SpecialHedgehog.Mobs;
 using SpecialHedgehog.Movement;
 using SpecialHedgehog.PickUps;
+using SpecialHedgehog.UI;
 using SpecialHedgehog.UnityRefs;
 using UnityEngine;
 
@@ -33,6 +35,7 @@ namespace SpecialHedgehog.Hero
         private EcsPoolInject<HitSounds> _hitSoundsPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
+        private EcsCustomInject<UIService> _uiService;
         
         public void Init(IEcsSystems systems)
         {
@@ -65,7 +68,7 @@ namespace SpecialHedgehog.Hero
             health.Current = health.Max;
 
             ref var healthbarRef = ref _healthbarViewRefPool.Value.Add(heroEntity);
-            healthbarRef.Value = Object.FindObjectOfType<HealthbarView>(); // TODO: Replace FindObjectOfType
+            healthbarRef.Value = _uiService.Value.GetScreen<PlayerHealthScreen>().Healthbar;
 
             ref var deathSounds = ref _deathSoundsPool.Value.Add(heroEntity);
             deathSounds.AudioClips = heroView.Config.DeathSounds;

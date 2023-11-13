@@ -29,6 +29,7 @@ namespace SpecialHedgehog.Framework
         [SerializeField] private GameConfig config;
         [SerializeField] private SceneData sceneData;
         [SerializeField] private AudioService audioService;
+        [SerializeField] private UIService uiService;
 
         private EcsWorld _mainWorld;
         private EcsWorld _eventWorld;
@@ -57,7 +58,8 @@ namespace SpecialHedgehog.Framework
                 timeService,
                 inputService,
                 inputMaster,
-                audioService
+                audioService,
+                uiService
             };
 
             InitSystems(shared);
