@@ -37,3 +37,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9a4c07c9c465ce14a809b8062db3ca4b, type: 3}
   - {fileID: 8300000, guid: 44364cf701d179c47832b85edfc37cc8, type: 3}
   - {fileID: 8300000, guid: 4c1afd01478043a47add5b0ed3a48518, type: 3}
+  <LevelsConfig>k__BackingField: {fileID: 11400000, guid: d96e4627609ecfb46ada3deb772615c8, type: 2}

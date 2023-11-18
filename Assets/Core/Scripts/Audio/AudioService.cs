@@ -47,6 +47,11 @@ namespace SpecialHedgehog.Audio
             audioMixer.SetFloat(audioOption.Key, (int) soundState);
         }
 
+        public void PlaySound(AudioClip clip)
+        {
+            soundsAudioSource.PlayOneShot(clip);
+        }
+        
         public void PlaySoundAtPoint(AudioClip clip, Vector3 point)
         {
             soundsAudioSource.transform.position = point;

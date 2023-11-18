@@ -2,7 +2,6 @@
 using Leopotam.EcsLite.Di;
 using SpecialHedgehog.Framework.Services;
 using SpecialHedgehog.UI;
-using UnityEngine;
 
 namespace SpecialHedgehog.PickUps
 {

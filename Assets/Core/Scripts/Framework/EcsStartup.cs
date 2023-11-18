@@ -9,6 +9,7 @@ using SpecialHedgehog.Audio;
 using SpecialHedgehog.Cameras;
 using SpecialHedgehog.Damage;
 using SpecialHedgehog.Death;
+using SpecialHedgehog.Experience;
 using SpecialHedgehog.Framework.Configuration;
 using SpecialHedgehog.Framework.Physics;
 using SpecialHedgehog.Framework.Services;
@@ -17,6 +18,7 @@ using SpecialHedgehog.Hero;
 using SpecialHedgehog.Input;
 using SpecialHedgehog.Mobs;
 using SpecialHedgehog.Movement;
+using SpecialHedgehog.Pause;
 using SpecialHedgehog.PickUps;
 using SpecialHedgehog.Projectiles;
 using SpecialHedgehog.Time;
@@ -25,6 +27,7 @@ using UnityEngine;
 
 namespace SpecialHedgehog.Framework
 {
+    
     public class EcsStartup : Singleton<EcsStartup>
     {
         [SerializeField] private GameConfig config;
@@ -94,45 +97,92 @@ namespace SpecialHedgehog.Framework
                 .Add(new EcsWorldDebugSystem())
                 .Add(new EcsWorldDebugSystem(Constants.Worlds.Events))
 #endif
-                .Add(new TimeSystem())
+                .AddGroup(Constants.Features.Time, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new TimeSystem()})
                 
                 .Add(new GameInputSystem())
                 .Add(new MenuInputSystem())
                 
+                    .DelHere<PauseEnabledEvent>(Constants.Worlds.Events)
+                    .DelHere<PauseDisabledEvent>(Constants.Worlds.Events)
+                .AddGroup(Constants.Features.Pause, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new PauseSystem()})
+                    .DelHere<PauseRequest>(Constants.Worlds.Events)
+                    .DelHere<DisablePauseRequest>(Constants.Worlds.Events)
+                
                 .Add(new InputToDirectionSystem())
                 
-                .Add(new PistolAbilitySystem())
+                .AddGroup(Constants.Features.PistolAbility, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new PistolAbilitySystem()})
                 
-                .Add(new ProjectileSpawnSystem())
+                .AddGroup(Constants.Features.ProjectileSpawn, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new ProjectileSpawnSystem()})
                     .DelHere<ProjectileSpawnRequest>(Constants.Worlds.Events)
                 
-                .Add(new WaveSpawnSystem())
-                .Add(new MobSpawnSystem())
-                    .DelHere<MobSpawnRequest>(Constants.Worlds.Events)
-                .Add(new MobDirectionUpdateSystem())
-                .Add(new AttackCooldownReduceSystem())
-                .Add(new MobAttackSystem())
+                .AddGroup(Constants.Features.WaveSpawn, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new WaveSpawnSystem()})
                 
-                .Add(new ProjectileEnemyHitSystem())
+                .AddGroup(Constants.Features.MobSpawn, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new MobSpawnSystem()})
+                    .DelHere<MobSpawnRequest>(Constants.Worlds.Events)
+
+                .AddGroup(Constants.Features.MobSpawn, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new MobDirectionUpdateSystem(),
+                        new AttackCooldownReduceSystem(),
+                        new MobAttackSystem()})
+                    .DelHere<MobSpawnRequest>(Constants.Worlds.Events)
+                    
+                .AddGroup(Constants.Features.Timer, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new TimerUpdateSystem<AttackCooldown>()})
+                
+                .AddGroup(Constants.Features.Projectile, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new ProjectileEnemyHitSystem()})
                     .DelHere<FirstEnemyHit>()
                 
                     .DelHere<Damaged>()
                     .DelHere<JustDied>()
-                .Add(new MakeDamageSystem())
+                .AddGroup(Constants.Features.Damage, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new MakeDamageSystem()})
                     .DelHere<MakeDamageRequest>(Constants.Worlds.Events)
                 
-                .Add(new GemSpawnSystem())
-                .Add(new GemPickUpSystem())
-                .Add(new PickUpSoundSystem())
-                    .DelHere<PickedUp>()
+                .AddGroup(Constants.Features.PickUp, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                    new GemSpawnSystem(),
+                    new GemPickUpSystem(),
+                    new PickUpSoundSystem()})
                 
-                .Add(new HitSoundSystem())
-                .Add(new DeathAudioSystem())
-                .Add(new BackgroundMusicSystem())
+                    .DelHere<ExperienceGained>()
+                .AddGroup(Constants.Features.Experience, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new ExperiencePickUpSystem(),
+                        new ExperienceGainSystem(),
+                        new LevelUpSystem(),
+                        new PlayerLevelUpSoundSystem()})
+                    .DelHere<LevelUp>()
                 
-                .Add(new DeathSystem())
+                .AddGroup(Constants.Features.Audio, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new HitSoundSystem(),
+                        new DeathSoundSystem(),
+                        new BackgroundMusicSystem()})
                 
-                .Add(new Rigidbody2DMovement())
+                .AddGroup(Constants.Features.Death, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new DeathSystem()})
+                
+                .AddGroup(Constants.Features.Movement, true, Constants.Worlds.Events,
+                    new IEcsSystem [] {
+                        new Rigidbody2DMovement()})
                 
                 ;
 
@@ -161,6 +211,7 @@ namespace SpecialHedgehog.Framework
                 .Add(new HealthbarUIUpdateSystem())
                 .Add(new WalletUIUpdateSystem())
                     .DelHere<ValueChanged>()
+                .Add(new ExperienceUIUpdateSystem())
                 ;
 
             _lateUpdateSystems

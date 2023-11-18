@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SpecialHedgehog.Experience;
+using UnityEngine;
 
 namespace SpecialHedgehog.Hero
 {
@@ -13,5 +14,6 @@ namespace SpecialHedgehog.Hero
         [field: SerializeField] public AudioClip[] DeathSounds { get; private set; }
         [field: SerializeField] public AudioClip[] HitSounds { get; private set; }
         [field: SerializeField] public AudioClip[] StepSounds { get; private set; }
+        [field: SerializeField] public PlayerLevelsConfig LevelsConfig { get; private set; }
     }
 }

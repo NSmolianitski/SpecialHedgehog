@@ -1,10 +1,10 @@
-﻿using SpecialHedgehog.PickUps;
-using StatefulUISupport.Scripts.Components;
+﻿using SpecialHedgehog.Framework;
+using SpecialHedgehog.PickUps;
 using UnityEngine;
 
 namespace SpecialHedgehog.UI
 {
-    public class PlayerWalletScreen : StatefulView
+    public class PlayerWalletScreen : UIScreen
     {
         [field: SerializeField] public WalletView GemWallet { get; private set; }
     }

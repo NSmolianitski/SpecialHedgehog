@@ -12,6 +12,7 @@ namespace SpecialHedgehog.Framework.Configuration
         [field: Header("Hero")]
         [field: SerializeField] public HeroView HeroViewPrefab { get; private set; }
         [field: SerializeField] public AudioClip[] ShootSounds { get; private set; }
+        [field: SerializeField] public AudioClip LevelUpSound { get; private set; }
         
         [field: Header("Mobs")]
         [field: SerializeField] public MobView MobViewPrefab { get; private set; }

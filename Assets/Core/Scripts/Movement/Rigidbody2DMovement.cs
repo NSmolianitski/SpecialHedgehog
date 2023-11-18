@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using SpecialHedgehog.Framework;
 using SpecialHedgehog.Framework.Services;
 using SpecialHedgehog.UnityRefs;
 
@@ -14,9 +15,13 @@ namespace SpecialHedgehog.Movement
         private EcsPoolInject<Direction> _directionPool;
 
         private EcsCustomInject<TimeService> _timeService;
+        private EcsCustomInject<GameData> _gameData;
         
         public void Run(IEcsSystems systems)
         {
+            if (_gameData.Value.PauseEnabled)
+                return;
+            
             foreach (var entity in _filter.Value)
             {
                 ref var rigidbody2DRef = ref _rigidbody2DPool.Value.Get(entity);

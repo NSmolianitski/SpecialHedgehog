@@ -4,6 +4,7 @@ using SpecialHedgehog.Abilities;
 using SpecialHedgehog.Audio.Sounds;
 using SpecialHedgehog.Cameras;
 using SpecialHedgehog.Damage;
+using SpecialHedgehog.Experience;
 using SpecialHedgehog.Framework.Configuration;
 using SpecialHedgehog.Framework.Services;
 using SpecialHedgehog.Health;
@@ -33,6 +34,9 @@ namespace SpecialHedgehog.Hero
         private EcsPoolInject<GemWalletOwner> _gemWalletOwnerPool;
         private EcsPoolInject<DeathSounds> _deathSoundsPool;
         private EcsPoolInject<HitSounds> _hitSoundsPool;
+        private EcsPoolInject<Experience.Experience> _experiencePool;
+        private EcsPoolInject<Level> _levelPool;
+        private EcsPoolInject<ExperienceBarViewRef> _experienceBarViewRefPool;
         
         private EcsCustomInject<GameConfig> _gameConfig;
         private EcsCustomInject<UIService> _uiService;
@@ -75,6 +79,18 @@ namespace SpecialHedgehog.Hero
 
             ref var hitSounds = ref _hitSoundsPool.Value.Add(heroEntity);
             hitSounds.AudioClips = heroView.Config.HitSounds;
+            
+            ref var level = ref _levelPool.Value.Add(heroEntity);
+            level.LevelExperienceList = heroView.Config.LevelsConfig.ExperiencePerLevel;
+            level.Current = 0; // TODO: Add save loading
+            level.Max = level.LevelExperienceList.Length - 1;
+            
+            ref var experience = ref _experiencePool.Value.Add(heroEntity);
+            experience.Current = 0; // TODO: Add save loading
+            experience.TillNextLevel = level.LevelExperienceList[level.Current];
+
+            ref var experienceBarViewRef = ref _experienceBarViewRefPool.Value.Add(heroEntity);
+            experienceBarViewRef.Value = _uiService.Value.GetScreen<PlayerExperienceScreen>().ExperienceBar;
             
             _inputListenerPool.Value.Add(heroEntity);
             _directionPool.Value.Add(heroEntity);
